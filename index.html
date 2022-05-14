@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobby Hall | Tuotelaskuri</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1 class="titleText">HH Tuotelaskuri</h1>
+    </header>
+    <nav>
+
+    </nav>
+    <main>
+        <div class="productHeader">
+            <h3 class="orderTotalText" id="orderTotalText">Tuotteiden yhteishinta: 0.00€</h3>
+            <button class="addProductButton" id="addProductButton">+ Lisää tuote</button>
+            <label for="productAmount" class="productAmountText" id="productAmountText">Tuotteita yhteensä: 1</label>
+        </div>
+        <ol class="productFieldParent" id="productFieldParent">
+            <li class="productField">
+                <label for="productInputfield" class="productText">Tuotteen hinta (€): </label>
+                <input type="number" class="productInputField" id="productInputField1" value="0">
+                <label for="discountInputField" class="discountText">Alennusta (%): </label>
+                <input type="number" class="discountInputField" id="discountInputField1" value="0">
+                <label class="discountedText" id="discountedText1">Alennettu hinta: 0.00€</label>
+            </li>
+        </ol>
+        <div class="productBottom">
+            <button class="calculateButton" id="calculateButton">Laske</button><br>
+            <br><h3 class="orderTotalText" id="orderTotalText2">Tuotteiden yhteishinta: 0.00€</h3>
+        </div>        
+    </main>
+    <footer>
+        <h3 class="guideTitle">Laskurin käyttöohjeet:</h3>
+        <ol>
+            <li>Paina "+ Lisää tuote" nappia lisätäksesi tuotteen laskuriin</li>
+            <li>Anna tuotteelle hinta</li>
+            <li>Anna tuotteelle valitsemasi alennus prosentteina (Jos tuotteelle ei haluta alennusta jätä arvoon 0)</li>
+            <li>Jos vahingossa lisäsit liikaa tuotteita, jätä hinnaksi ja alennukseksi 0, jolloin ei vaikuta laskuun</li>
+            <li>Kun kaikille haluamalle tuotteille on asetettu hinta ja alennus. Paina laske nappia.</li>
+            <li>Jokaisen tuotteen vieressä lukee tuotteen kyseinen alennettu hinta. Alempana näkee kaikkien tuotteiden yhteishinnan, jossa alennukset otettu huomioon.</li>
+            <li>Aloittaaksesi uuden laskun, sivu täytyy avata uudelleen.</li>
+        </ol>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
