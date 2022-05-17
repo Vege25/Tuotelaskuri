@@ -3,7 +3,6 @@ const addProductButton = document.querySelector('#addProductButton');
 const productParent  = document.querySelector('#productFieldParent');
 const calculateButton = document.querySelector('#calculateButton');
 const emptyAllButton = document.querySelector('#emptyAllButton');
-let removeBtn = document.querySelectorAll('.remove');
 
 const productAmountText = document.querySelector('#productAmountText');
 const orderTotalText = document.querySelector('#orderTotalText');
@@ -23,14 +22,6 @@ if(addProductButton != null){
         productAmountText.innerHTML = 'Tuotteita yhteensä: ' + productAmount;
         // create new product field
         addInputfield(1);
-
-        //when button is added update removeBtn array
-        removeBtn = document.querySelectorAll('.remove');
-        // When new product is added, add onclick listener every button again
-        for (var i = 0 ; i < removeBtn.length; i++) {
-            console.log('click listener given');
-            removeBtn[i].addEventListener("click", registerClickHandler, false);
-        }
     });
 }
 
@@ -117,17 +108,11 @@ function addInputfield(times){
         discountedText.id = 'discountedText' + productAmount;
         discountedText.innerHTML = ' Alennettu hinta: 0.000€ ';
 
-        let removebutton = document.createElement('button');
-        removebutton.className = 'remove';
-        removebutton.id = 'remove';
-        removebutton.innerHTML = 'X';
-
         listElement.appendChild(productText);
         listElement.appendChild(productInputField);
         listElement.appendChild(discountText);
         listElement.appendChild(discountInputField);
         listElement.appendChild(discountedText);
-        listElement.appendChild(removebutton);
 
         productParent.appendChild(listElement);
     }
@@ -138,20 +123,4 @@ if(emptyAllButton != null){
     emptyAllButton.addEventListener('click', () => {
         window.location.href = 'index.html';
     });
-}
-
-// Remove targets parent
-function registerClickHandler (e) {
-    console.log('called function');
-    productAmount--;
-    productAmountText.innerHTML = 'Tuotteita yhteensä: ' + productAmount;
-
-    var target = e.target;
-    target.parentNode.parentNode.removeChild(target.parentNode);
-}
-
-// When new product is added, add onclick listener to the new one aswell
-for (var i = 0 ; i < removeBtn.length; i++) {
-    console.log('click listener given');
-    removeBtn[i].addEventListener("click", registerClickHandler, false);
 }
