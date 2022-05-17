@@ -40,6 +40,22 @@ main li{
     font-size: 22px;
 }
 
+.remove{
+    padding: 1px 5px;
+    margin-left: 30px;
+    font-weight: bold;
+    background: red;
+    width: 50px;
+    border-radius: 10px;
+    outline: black;
+    outline-style: solid;
+    outline-width: 2.5px;
+}
+
+.remove:hover{
+    background: rgb(165, 32, 32);
+}
+
 main{
     max-width: 750px;
     margin: 0 auto;

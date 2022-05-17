@@ -25,14 +25,15 @@
             <label for="productAmount" class="productAmountText" id="productAmountText">Tuotteita yhteensä: 1</label>
         </div>
         <ol class="productFieldParent" id="productFieldParent">
-            <li class="productField">
+            <!--<li class="productField">
                 <label for="productInputfield" class="productText">Tuotteen hinta (€): </label>
-                <input type="number" class="productInputField" id="productInputField1" value="0">
+                <input type="number" class="productInputField" id="productInputField" value="0">
                 <label for="discountInputField" class="discountText">Alennusta (%): </label>
-                <input type="number" class="discountInputField" id="discountInputField1" value="0">
-                <label class="discountedText" id="discountedText1">Alennettu hinta: 0.000€</label>
-                <button class="remove" id="remove">X</button>
-            </li>
+                <input type="number" class="discountInputField" id="discountInputField" value="0">
+                <label class="discountedText" id="discountedText">Alennettu hinta: 0.000€</label>
+                //<button class="remove" id="remove">X</button>
+                <label class="remove" id="remove">X</label>
+            </li>-->
         </ol>
         <div class="productBottom">
             <button class="calculateButton" id="calculateButton">Laske</button><br>
@@ -45,9 +46,9 @@
             <li>Paina "+ Lisää tuote" nappia lisätäksesi tuotteen laskuriin</li>
             <li>Anna tuotteelle hinta</li>
             <li>Anna tuotteelle valitsemasi alennus prosentteina (Jos tuotteelle ei haluta alennusta jätä arvoon 0)</li>
-            <li>Jos vahingossa lisäsit liikaa tuotteita, jätä hinnaksi ja alennukseksi 0, jolloin ei vaikuta laskuun</li>
-            <li>Kun kaikille haluamalle tuotteille on asetettu hinta ja alennus. Paina laske nappia.</li>
-            <li>Jokaisen tuotteen vieressä lukee tuotteen kyseinen alennettu hinta. Alempana näkee kaikkien tuotteiden yhteishinnan, jossa alennukset otettu huomioon.</li>
+            <li>Poista tuotteita painamalla "X" nappia</li>
+            <li>Kun kaikille haluamalle tuotteille on asetettu hinta ja alennus, paina laske nappia.</li>
+            <li>Jokaisen tuotteen vieressä lukee tuotteen alennettu hinta. Alempana näkee kaikkien tuotteiden yhteishinnan, jossa alennukset otettu huomioon.</li>
             <li>Aloittaaksesi uuden laskun, paina "Tyhjennä kaikki" nappia, tai lataa sivu uudelleen.</li>
         </ol>
     </footer>
