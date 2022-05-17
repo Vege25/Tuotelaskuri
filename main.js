@@ -2,6 +2,8 @@
 const addProductButton = document.querySelector('#addProductButton');
 const productParent  = document.querySelector('#productFieldParent');
 const calculateButton = document.querySelector('#calculateButton');
+const emptyAllButton = document.querySelector('#emptyAllButton');
+let removeBtn = document.querySelectorAll('.remove');
 
 const productAmountText = document.querySelector('#productAmountText');
 const orderTotalText = document.querySelector('#orderTotalText');
@@ -10,6 +12,7 @@ const orderTotalText2 = document.querySelector('#orderTotalText2');
 
 let productAmount = 1;
 let orderArray = [];
+let orderTotalCostDiscounted = 0;
 let orderTotalCost = 0;
 
 
@@ -20,6 +23,14 @@ if(addProductButton != null){
         productAmountText.innerHTML = 'Tuotteita yhteensä: ' + productAmount;
         // create new product field
         addInputfield(1);
+
+        //when button is added update removeBtn array
+        removeBtn = document.querySelectorAll('.remove');
+        // When new product is added, add onclick listener every button again
+        for (var i = 0 ; i < removeBtn.length; i++) {
+            console.log('click listener given');
+            removeBtn[i].addEventListener("click", registerClickHandler, false);
+        }
     });
 }
 
@@ -31,12 +42,15 @@ if(calculateButton != null){
             let productInputValue = document.querySelector('#productInputField' + i).value;
             let discountInputValue = document.querySelector('#discountInputField' + i).value;
 
-            // If input fields is not null and greater than 0 -> calculate values
+            orderTotalCost += parseFloat(productInputValue);
+
+            // if discount is 0, keep the value and do not calculate
             if(discountInputValue == 0){
                 discountedText.innerHTML = ' Hinta: ' + productInputValue + '€';
                 orderArray.push(parseFloat(productInputValue));
             }
             else{
+                // If input fields is not null and greater than 0 -> calculate values
                 if(productInputValue != null && productInputValue > 0 && discountInputValue != null && discountInputValue > 0){
                     let value = calculatePercentage(discountInputValue, productInputValue);
                     let discountedValue = productInputValue - value;
@@ -49,12 +63,20 @@ if(calculateButton != null){
                 }
             }
         }
+        // to calculate total discounted price, get every value from array and store it to variable
         for(let i = 0; i < orderArray.length; i++){
-            orderTotalCost += parseFloat(orderArray[i]);
+            orderTotalCostDiscounted += parseFloat(orderArray[i]);
         }
-        orderTotalText.innerHTML = 'Tuotteiden yhteishinta: ' + orderTotalCost.toFixed(3) + '€';
-        orderTotalText2.innerHTML = 'Tuotteiden yhteishinta: ' + orderTotalCost.toFixed(3) + '€';
+
+        //get discount amount by decreasing discounted price from total price
+        let discountAmount = orderTotalCost - orderTotalCostDiscounted;
+
+        // set text fields to results and zero arrays and variables
+        orderTotalText.innerHTML = 'Tuotteiden yhteishinta: ' + orderTotalCostDiscounted.toFixed(3) + '€'
+            + ' Alennuksen määrä: ' + discountAmount.toFixed(3) + '€';
+        orderTotalText2.innerHTML = orderTotalText.innerHTML;
         orderArray = [];
+        orderTotalCostDiscounted = 0;
         orderTotalCost = 0;
     });
 }
@@ -93,14 +115,43 @@ function addInputfield(times){
         let discountedText = document.createElement('label');
         discountedText.className = 'discountedText';
         discountedText.id = 'discountedText' + productAmount;
-        discountedText.innerHTML = ' Alennettu hinta: 0.00€';
+        discountedText.innerHTML = ' Alennettu hinta: 0.000€ ';
+
+        let removebutton = document.createElement('button');
+        removebutton.className = 'remove';
+        removebutton.id = 'remove';
+        removebutton.innerHTML = 'X';
 
         listElement.appendChild(productText);
         listElement.appendChild(productInputField);
         listElement.appendChild(discountText);
         listElement.appendChild(discountInputField);
         listElement.appendChild(discountedText);
+        listElement.appendChild(removebutton);
 
         productParent.appendChild(listElement);
     }
+}
+
+// if empty all button is clicked reload the page so it resets all values
+if(emptyAllButton != null){
+    emptyAllButton.addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
+}
+
+// Remove targets parent
+function registerClickHandler (e) {
+    console.log('called function');
+    productAmount--;
+    productAmountText.innerHTML = 'Tuotteita yhteensä: ' + productAmount;
+
+    var target = e.target;
+    target.parentNode.parentNode.removeChild(target.parentNode);
+}
+
+// When new product is added, add onclick listener to the new one aswell
+for (var i = 0 ; i < removeBtn.length; i++) {
+    console.log('click listener given');
+    removeBtn[i].addEventListener("click", registerClickHandler, false);
 }

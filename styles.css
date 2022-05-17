@@ -34,6 +34,7 @@ body{
 }
 main li{
     font-size: 20px;
+    margin-bottom: 10px;
 }
 .productAmountText{
     font-size: 22px;
@@ -63,7 +64,5 @@ footer li{
 }
 
 @media only screen and (min-width: 500px){
-    body{
-        
-    }
+    
 }
